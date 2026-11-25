@@ -11,11 +11,12 @@
 ## 目次
 
 1. [動作環境](#1-動作環境)
-2. [ビルドと iPad へのインストール](#2-ビルドと-ipad-へのインストール)
-3. [画面と設定項目](#3-画面と設定項目)
-4. [再現の手順](#4-再現の手順)
-5. [診断機能の見方](#5-診断機能の見方)
-6. [ファイル構成](#6-ファイル構成)
+2. [Apryse 側で検証した環境](#2-Apryse側で検証した環境)
+3. [ビルドと iPad へのインストール](#3-ビルドと-ipad-へのインストール)
+4. [画面と設定項目](#4-画面と設定項目)
+5. [再現の手順](#5-再現の手順)
+6. [診断機能の見方](#6-診断機能の見方)
+7. [ファイル構成](#7-ファイル構成)
 
 ---
 
@@ -39,11 +40,24 @@ This version of .NET for iOS (...) requires Xcode XX.X. The current version of X
 
 **注意 2（シミュレータ）**：NuGet の `PDFTron.iOS` には実機用のバイナリのみが含まれているため、シミュレータ向けにはリンクできません。実機向け（`ios-arm64`）でビルドしてください。
 
+## 2. Apryse 側で検証した環境
+
+### 検証環境
+
+| 項目                             | ご報告の環境             | Apryse 側の検証          |
+| -------------------------------- | ------------------------ | ------------------------ |
+| アプリ                           | .NET MAUI（net10.0-ios） | .NET MAUI、および Swift  |
+| SDK                              | 12.1.0（NuGet）          | 12.1.0                   |
+| 端末                             | **iPad（第10世代）**     | **iPad mini（第6世代）** |
+| OS                               | iPadOS 26.5              | iPadOS 26.5.2            |
+| Apple Pencil                     | Apple Pencil (USB-C)     | Apple Pencil (USB-C)     |
+| OS の「Apple Pencil のみで描画」 | ON                       | ON                       |
+
 ---
 
-## 2. ビルドと iPad へのインストール
+## 3. ビルドと iPad へのインストール
 
-### 2-1. 署名の設定
+### 3-1. 署名の設定
 
 `Signing.props.example` をコピーして `Signing.props` を作り、Team ID と Bundle ID を設定します。
 
@@ -57,7 +71,7 @@ cp Signing.props.example Signing.props
 
 その Bundle ID 用のプロビジョニングプロファイルが必要です。お持ちでない場合は、Xcode で同じ Bundle ID の空のアプリを一度実機にビルドすると、自動署名でプロファイルが作られます。
 
-### 2-2. ビルド
+### 3-2. ビルド
 
 ```sh
 cd PencilReproMaui
@@ -72,7 +86,7 @@ dotnet build -f net10.0-ios -r ios-arm64 \
   -p:CodesignProvision="<プロファイル名>"
 ```
 
-### 2-3. iPad へのインストールと起動
+### 3-3. iPad へのインストールと起動
 
 Visual Studio Code / Rider などから実機を選んで実行するか、コマンドラインで次のようにインストールします。
 
@@ -86,7 +100,7 @@ xcrun devicectl device install app --device <Identifier> \
 
 **重要：アプリは iPad のホーム画面から手動で起動してください。** Apryse 側の検証では、Mac から `xcrun devicectl device process launch` で起動したプロセスに、**Apple Pencil のタッチが一切届かない**ことがありました（指のタッチは届きます）。起動し直すときも、アプリスイッチャーでアプリを終了させてから、ホーム画面のアイコンで起動してください。
 
-### 2-4. Bluetooth のキーの有無を切り替える（任意）
+### 3-4. Bluetooth のキーの有無を切り替える（任意）
 
 Apryse SDK は、Apple Pencil がペアリングされているかを **CoreBluetooth** で調べています。iOS では、Info.plist に `NSBluetoothAlwaysUsageDescription` がないアプリは Bluetooth を使えないため、このキーの有無で SDK の動作が変わる可能性があります。
 
@@ -99,7 +113,7 @@ Apryse SDK は、Apple Pencil がペアリングされているかを **CoreBlue
 
 ---
 
-## 3. 画面と設定項目
+## 4. 画面と設定項目
 
 ### ホーム画面
 
@@ -153,9 +167,9 @@ SetControlsHidden(true, false);
 
 ---
 
-## 4. 再現の手順
+## 5. 再現の手順
 
-### 4-1. 手順
+### 5-1. 手順
 
 ご報告の再現手順と同じです。
 
@@ -168,7 +182,7 @@ SetControlsHidden(true, false);
 7. 「**Export log**」を押してログを書き出します。
 8. 「Close」で閉じ、もう一度開いて、元に戻るかを確認します。
 
-### 4-2. ご報告の「試した構成」との対応
+### 5-2. ご報告の「試した構成」との対応
 
 | ご報告の構成                                    | 本サンプルの設定                                                                 |
 | ----------------------------------------------- | -------------------------------------------------------------------------------- |
@@ -180,7 +194,7 @@ SetControlsHidden(true, false);
 | `readonly` = `YES` / `NO`                       | readonly = ON / OFF（上のそれぞれと組み合わせ）                                  |
 | ご質問 5                                        | setMinimumTwoFingersToScrollEnabled = CallNo                                     |
 
-### 4-3. ログの取り出し
+### 5-3. ログの取り出し
 
 「Export log」を押すと共有シートが開き、ログ（`PencilReproMaui-log-<日時>.txt`）を AirDrop やメールで送れます。同じファイルがアプリの Documents にも保存されます。Mac から取り出す場合は、次のコマンドを使えます（Finder や「ファイル」アプリからも見られます）。
 
@@ -192,7 +206,7 @@ xcrun devicectl device copy from --device <Identifier> \
 
 ---
 
-## 5. 診断機能の見方
+## 6. 診断機能の見方
 
 ### オーバーレイ（ビューアの右上）
 
@@ -240,7 +254,7 @@ MAUI はアプリ自身の `UIWindow` を作るため、ウィンドウの `send
 ---
 
 
-## 6. ファイル構成
+## 7. ファイル構成
 
 ```
 PencilReproMaui-sample/
