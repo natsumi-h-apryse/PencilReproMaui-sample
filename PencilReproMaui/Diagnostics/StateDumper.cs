@@ -15,7 +15,7 @@ public sealed class StateSnapshot
     public string Signature { get; set; } = "";
 }
 
-/// <summary>Same dump as the Swift version's StateDumper (C# port).</summary>
+/// <summary>Collects the viewer state (tool manager, gesture recognizers, hit test, windows) for the log and overlay.</summary>
 public static class StateDumper
 {
     static string Cls(Foundation.NSObject? o) => o == null ? "nil" : GestureInfo.ClassName(o);

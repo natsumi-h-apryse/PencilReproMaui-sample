@@ -116,7 +116,7 @@ public sealed class DiagnosticsSession : IDisposable
         _overlay.Superview?.BringSubviewToFront(_overlay);
     }
 
-    /// Same rule as the Swift version: no touch active for >= 0.25 s, yet a recognizer on
+    /// Stuck rule: no touch active for >= 0.25 s, yet a recognizer on
     /// PTPDFScrollView / PTPDFViewCtrl is not Possible.
     void EvaluateStuck(StateSnapshot snap)
     {

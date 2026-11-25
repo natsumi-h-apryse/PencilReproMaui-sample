@@ -3,7 +3,7 @@ using System.Text;
 
 namespace PencilReproMaui;
 
-/// <summary>Session log in the same line format as the Swift version (for side-by-side diffing).</summary>
+/// <summary>Session log (timestamped lines, also written to the console).</summary>
 public sealed class DiagLog
 {
     public enum Category { App, Touch, State, Tool, Stuck, Ui }

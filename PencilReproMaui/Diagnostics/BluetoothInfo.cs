@@ -4,8 +4,7 @@ using Foundation;
 namespace PencilReproMaui;
 
 /// <summary>
-/// Bluetooth conditions that affect the SDK's Apple Pencil pairing detection (C# port of the
-/// Swift BluetoothInfo). The SDK detects a paired Pencil with CoreBluetooth, which only works if
+/// Bluetooth conditions that affect the SDK's Apple Pencil pairing detection. The SDK detects a paired Pencil with CoreBluetooth, which only works if
 /// Info.plist has NSBluetoothAlwaysUsageDescription and Bluetooth access has been granted.
 /// </summary>
 public static class BluetoothInfo
