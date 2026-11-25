@@ -44,9 +44,9 @@ This version of .NET for iOS (...) requires Xcode XX.X. The current version of X
 
 ### 検証環境
 
-| 項目                             | ご報告の環境             | Apryse 側の検証          |
+| 項目                             | 報告された環境             | Apryse 側の検証          |
 | -------------------------------- | ------------------------ | ------------------------ |
-| アプリ                           | .NET MAUI（net10.0-ios） | .NET MAUI、および Swift  |
+| アプリ                           | .NET MAUI（net10.0-ios） | .NET MAUI  |
 | SDK                              | 12.1.0（NuGet）          | 12.1.0                   |
 | 端末                             | **iPad（第10世代）**     | **iPad mini（第6世代）** |
 | OS                               | iPadOS 26.5              | iPadOS 26.5.2            |
