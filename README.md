@@ -244,7 +244,7 @@ MAUI はアプリ自身の `UIWindow` を作るため、ウィンドウの `send
 
 ```
 PencilReproMaui-sample/
-├── README.md                          この文書
+├── README.md                          
 └── PencilReproMaui/
     ├── PencilReproMaui.csproj         プロジェクト（NuGet 12.1.0 固定、Bluetooth のキーの切り替え）
     ├── Signing.props.example          署名の設定のひな形（→ Signing.props にコピー）
