@@ -1,0 +1,70 @@
+# ---------------------------------------------------------------------------
+# Local signing settings (Team ID / Bundle ID) — never commit.
+# Copy PencilReproMaui/Signing.props.example to Signing.props instead.
+# ---------------------------------------------------------------------------
+Signing.props
+
+# ---------------------------------------------------------------------------
+# .NET / MAUI build output
+# ---------------------------------------------------------------------------
+bin/
+obj/
+*.binlog
+artifacts/
+
+# NuGet
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+project.assets.json
+project.nuget.cache
+
+# iOS build products / signing artifacts
+*.app/
+*.ipa
+*.dSYM/
+*.dSYM.zip
+*.mobileprovision
+*.p12
+*.cer
+
+# ---------------------------------------------------------------------------
+# IDEs
+# ---------------------------------------------------------------------------
+# Visual Studio / VS for Mac
+.vs/
+*.user
+*.suo
+*.userprefs
+*.userosscache
+*.sln.docstates
+
+# Rider / IntelliJ
+.idea/
+*.sln.iml
+
+# Visual Studio Code (keep shared settings if any are added later)
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Xcode (e.g. when a placeholder app is built to create a provisioning profile)
+xcuserdata/
+DerivedData/
+*.xcuserstate
+
+# ---------------------------------------------------------------------------
+# Logs exported from the app / copied from the device
+# ---------------------------------------------------------------------------
+PencilReproMaui-log-*.txt
+device-logs/
+
+# ---------------------------------------------------------------------------
+# OS files
+# ---------------------------------------------------------------------------
+.DS_Store
+._*
+Thumbs.db

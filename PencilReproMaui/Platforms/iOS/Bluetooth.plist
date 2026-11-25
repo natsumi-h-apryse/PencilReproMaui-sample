@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Partial Info.plist merged into the app's Info.plist only when the MSBuild property
+  PencilReproBluetoothUsageKey is true (default). See PencilReproMaui.csproj.
+-->
+<plist version="1.0">
+<dict>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>PencilRepro uses Bluetooth so that the Apryse SDK can detect whether an Apple Pencil is paired.</string>
+</dict>
+</plist>

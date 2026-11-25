@@ -1,0 +1,9 @@
+<!-- Copy to Signing.props (git-ignored) to build for a real iPad. -->
+<Project>
+  <PropertyGroup>
+    <!-- Your Apple Developer Team ID (Xcode > Settings > Accounts). -->
+    <CodesignTeamId>ABCDE12345</CodesignTeamId>
+    <!-- Personal Teams need a bundle ID unique to the team. -->
+    <ApplicationId>com.example.apryse.pencilrepro.maui.yourname</ApplicationId>
+  </PropertyGroup>
+</Project>
